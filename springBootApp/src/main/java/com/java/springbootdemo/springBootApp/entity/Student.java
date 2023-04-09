@@ -1,12 +1,14 @@
 package com.java.springbootdemo.springBootApp.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @ToString
 @Table(name = "student")
