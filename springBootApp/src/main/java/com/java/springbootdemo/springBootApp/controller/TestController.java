@@ -1,22 +1,22 @@
 package com.java.springbootdemo.springBootApp.controller;
 
+import com.java.springbootdemo.springBootApp.ConfigurationPropertiesDemo;
 import com.java.springbootdemo.springBootApp.entity.Student;
 import com.java.springbootdemo.springBootApp.exception.CustomExceptionHandler;
-import com.java.springbootdemo.springBootApp.model.response.StudentErrorResponse;
+import jakarta.websocket.server.PathParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 public class TestController {
 
+    @Autowired
+    private ConfigurationPropertiesDemo configurationPropertiesDemo;
     @Value("${family.name}")
     private String familyName;
     @Value("${family.address}")
@@ -24,6 +24,12 @@ public class TestController {
     @GetMapping("/")
     private String primaryMapping() {
         return "This is primary " + familyAddress + " for " + familyName;
+    }
+
+    @PostMapping("/test/{id}")
+    @ResponseBody
+    private ConfigurationPropertiesDemo primaryMapping(@PathParam("id") Long id) {
+        return configurationPropertiesDemo;
     }
 
     @GetMapping("/testException/{id}")

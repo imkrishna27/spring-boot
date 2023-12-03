@@ -1,11 +1,14 @@
 package com.java.springbootdemo.springBootApp.controller;
 
+import com.java.springbootdemo.springBootApp.custom_annotation.Subject;
 import com.java.springbootdemo.springBootApp.service.impl.CricketHobbyImpl;
 import com.java.springbootdemo.springBootApp.service.interfaces.Hobby;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HobbyController {
@@ -22,5 +25,9 @@ public class HobbyController {
     @GetMapping("/cricket")
     private String getCricketHobby() {
         return cricketHobby.getHobby();
+    }
+
+    @GetMapping("/test/params")
+    private void testParams(@Valid @RequestBody Subject subject) {
     }
 }
