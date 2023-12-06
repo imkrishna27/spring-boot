@@ -5,6 +5,7 @@ import com.java.springbootdemo.springBootApp.service.impl.CricketHobbyImpl;
 import com.java.springbootdemo.springBootApp.service.interfaces.Hobby;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -30,4 +31,25 @@ public class HobbyController {
     @GetMapping("/test/params")
     private void testParams(@Valid @RequestBody Subject subject) {
     }
+
+    @GetMapping("/test/requestAttribute")
+    private void testRequestAttribute(@RequestAttribute("visitor-count") Integer count) {
+        System.out.println("Visitor count is : "+ " " +count);
+    }
+
+    @GetMapping("/test/requestParam")
+    private void testRequestParam(@RequestParam("count") Integer count) {
+        System.out.println("count is : "+ " " +count);
+    }
+
+    @GetMapping("/test/pathVariable/{count}")
+    private void testPathVariable(@PathVariable("count") Integer count) {
+        System.out.println("count is : "+ " " +count);
+    }
+
+    @GetMapping("/test/requestHeader")
+    private void testRequestHeader(@RequestHeader("count") Integer count) {
+        System.out.println("count is : "+ " " +count);
+    }
+
 }
