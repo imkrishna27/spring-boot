@@ -2,11 +2,12 @@ package com.java.springbootdemo.springBootApp.controller;
 
 import com.java.springbootdemo.springBootApp.entity.Student;
 import com.java.springbootdemo.springBootApp.service.impl.StudentService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@ConditionalOnProperty(value = "student.service.enabled", havingValue = "true") // will load this class only if conditional is satisfied
 public class StudentController {
     private final StudentService studentService;
 

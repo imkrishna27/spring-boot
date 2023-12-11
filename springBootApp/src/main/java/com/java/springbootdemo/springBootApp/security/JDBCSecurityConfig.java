@@ -7,12 +7,12 @@
 //import org.springframework.security.provisioning.JdbcUserDetailsManager;
 //import org.springframework.security.provisioning.UserDetailsManager;
 //
-//import javax.sql.DataSource;
+//import javax.sql.DataSourceUtil;
 //
 //@Configuration
 //public class JDBCSecurityConfig {
 //    @Bean
-//    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+//    public UserDetailsManager userDetailsManager(DataSourceUtil dataSource) {
 //        UserDetails user = User.builder()
 //                .username("krishna")
 //                .password("{noop}12345")
