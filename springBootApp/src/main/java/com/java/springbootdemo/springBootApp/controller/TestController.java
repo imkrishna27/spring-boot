@@ -1,6 +1,7 @@
 package com.java.springbootdemo.springBootApp.controller;
 
 import com.java.springbootdemo.springBootApp.ConfigurationPropertiesDemo;
+import com.java.springbootdemo.springBootApp.custom_annotation.Subject;
 import com.java.springbootdemo.springBootApp.entity.Student;
 import com.java.springbootdemo.springBootApp.exception.CustomExceptionHandler;
 import jakarta.websocket.server.PathParam;
@@ -17,6 +18,9 @@ public class TestController {
 
     @Autowired
     private ConfigurationPropertiesDemo configurationPropertiesDemo;
+
+    @Autowired
+    private Subject subject;
     @Value("${family.name}")
     private String familyName;
     @Value("${family.address}")
@@ -30,6 +34,12 @@ public class TestController {
     @ResponseBody
     private ConfigurationPropertiesDemo primaryMapping(@PathParam("id") Long id) {
         return configurationPropertiesDemo;
+    }
+
+    @PostMapping("/test/config")
+    @ResponseBody
+    private Subject returnSubjectConfig() {
+        return subject;
     }
 
     @GetMapping("/testException/{id}")

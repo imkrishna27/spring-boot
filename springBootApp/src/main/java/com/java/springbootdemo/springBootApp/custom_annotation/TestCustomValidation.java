@@ -10,6 +10,7 @@ public class TestCustomValidation {
         Validator validator = factory.getValidator();
 
         Subject subject = new Subject();
+        System.out.println(subject);
 
         Set<ConstraintViolation<Subject>> violations = validator.validate(subject);
         for (ConstraintViolation<Subject> violation : violations) {
