@@ -56,7 +56,7 @@ public class HobbyController {
     }
 
     @GetMapping("/test/requestHeader")
-    private void testRequestHeader(@RequestHeader("count") Integer count) {
+    private void testRequestHeader(@Valid @RequestHeader("count") Integer count) {
         System.out.println("count is : "+ " " +count);
     }
     @GetMapping("/test/conditionalOnBean")

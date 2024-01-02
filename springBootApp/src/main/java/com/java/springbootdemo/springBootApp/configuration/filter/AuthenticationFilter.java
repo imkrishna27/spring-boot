@@ -24,7 +24,9 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                     new ArrayList<>()
             ));
             filterChain.doFilter(request, response);
-
+        }
+        else {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 

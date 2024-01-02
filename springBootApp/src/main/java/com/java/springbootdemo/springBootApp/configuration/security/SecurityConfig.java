@@ -16,10 +16,10 @@ public class SecurityConfig {
  @Bean
  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
   http.csrf().disable()
-          .authorizeRequests()
-          .anyRequest().authenticated()
-          .and()
-          .httpBasic();
+          .authorizeHttpRequests((requests) -> requests
+                  .requestMatchers("/**").permitAll()
+                  .anyRequest().authenticated()
+          );
 
   // add filter
   http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
